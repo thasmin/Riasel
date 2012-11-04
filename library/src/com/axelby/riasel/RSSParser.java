@@ -1,10 +1,7 @@
 package com.axelby.riasel;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Vector;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -44,7 +41,7 @@ public class RSSParser {
 				in_image = true;
 				continue;
 			} else if (name.equalsIgnoreCase("lastBuildDate")) {
-				Date date = parseRFC822(parser.nextText());
+				Date date = Utils.parseDate(parser.nextText());
 				if (date != null)
 					feed.setLastBuildDate(date);
 			} else if (name.equalsIgnoreCase("title") && parser.getNamespace().equals("")) {
@@ -80,7 +77,7 @@ public class RSSParser {
 				} else if (namespace.equals("") && name.equalsIgnoreCase("description")) {
 					item.setDescription(parser.nextText());
 				} else if (name.equalsIgnoreCase("pubDate")) {
-					item.setPublicationDate(parseRFC822(parser.nextText()));
+					item.setPublicationDate(Utils.parseDate(parser.nextText()));
 				} else if (name.equalsIgnoreCase("enclosure")) {
 					item.setMediaURL(parser.getAttributeValue(null, "url"));
 					try {
@@ -101,27 +98,4 @@ public class RSSParser {
 		return items;
 	}
 
-	private static Date parseRFC822(String date) {
-		final SimpleDateFormat rfc822DateFormats[] = new SimpleDateFormat[] {
-				new SimpleDateFormat("EEE, d MMM yy HH:mm:ss z"), new SimpleDateFormat("EEE, d MMM yy HH:mm z"),
-				new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z"), new SimpleDateFormat("EEE, d MMM yyyy HH:mm z"),
-				new SimpleDateFormat("d MMM yy HH:mm z"), new SimpleDateFormat("d MMM yy HH:mm:ss z"),
-				new SimpleDateFormat("d MMM yyyy HH:mm z"), new SimpleDateFormat("d MMM yyyy HH:mm:ss z"), };
-
-		for (SimpleDateFormat format : rfc822DateFormats) {
-			try {
-				return format.parse(date);
-			} catch (ParseException e) {
-			}
-
-			// try it again in english
-			try {
-				SimpleDateFormat enUSFormat = new SimpleDateFormat(format.toPattern(), Locale.US);
-				return enUSFormat.parse(date);
-			} catch (ParseException e) {
-			}
-		}
-
-		return null;
-	}
 }
