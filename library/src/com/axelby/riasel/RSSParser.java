@@ -10,27 +10,11 @@ import java.util.Vector;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-public class FeedParser {
-
-	private FeedParser() {
+public class RSSParser {
+	private RSSParser() {
 	}
 
-	public static Feed parseFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-		// make sure this is an RSS document
-		int eventType = parser.getEventType();
-		while (eventType != XmlPullParser.START_TAG)
-			eventType = parser.next();
-		if (parser.getName().equals("rss")) {
-			return processRSS(parser);
-		} else if (parser.getName().equals("feed")) {
-			// return processAtom(parser);
-			return null;
-		} else {
-			return null;
-		}
-	}
-
-	private static Feed processRSS(XmlPullParser parser) throws XmlPullParserException, IOException {
+	static Feed process(XmlPullParser parser) throws XmlPullParserException, IOException {
 		Feed feed = new Feed();
 		boolean in_image = false;
 
