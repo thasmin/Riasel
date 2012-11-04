@@ -7,16 +7,16 @@ import java.io.InputStream;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.test.AndroidTestCase;
+import android.test.ActivityTestCase;
 import android.util.Xml;
 
 import com.axelby.riasel.Feed;
 import com.axelby.riasel.FeedParser;
 
-public class AtomParserTest extends AndroidTestCase {
+public class AtomParserTest extends ActivityTestCase {
 	
 	public void testSimpleFeed() throws XmlPullParserException, IOException {
-		String xml = this.getContext().getResources().getString(R.string.atom_simple);
+		String xml = getInstrumentation().getContext().getResources().getString(R.string.atom_simple);
 		XmlPullParser parser = Xml.newPullParser();
 		InputStream is = new ByteArrayInputStream(xml.getBytes("utf-8"));
 		parser.setInput(is, "utf-8");
