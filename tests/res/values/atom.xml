@@ -29,6 +29,7 @@
 <?xml version=\"1.0\" encoding=\"utf-8\"?>
 <feed xmlns=\"http://www.w3.org/2005/Atom\">
   <title type=\"text\">dive into mark</title>
+  <icon>http://example.com/icon.png</icon>
   <subtitle type=\"html\">
     A &lt;em&gt;lot&lt;/em&gt; of effort
     went into making this effortless
@@ -59,10 +60,15 @@
     <contributor>
       <name>Joe Gregorio</name>
     </contributor>
+    <!--
     <content type=\"xhtml\" xml:lang=\"en\" xml:base=\"http://diveintomark.org/\">
       <div xmlns=\"http://www.w3.org/1999/xhtml\">
         <p><i>[Update: The Atom draft is finished.]</i></p>
       </div>
+    </content>
+    -->
+    <content type=\"html\">
+		&lt;p&gt;Such high volume would no doubt provide a dream platform for advertisers &amp;
     </content>
   </entry>
 </feed>

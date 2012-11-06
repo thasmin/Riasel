@@ -18,6 +18,8 @@ public class AtomParser {
 			if (eventType == XmlPullParser.START_TAG) {
 				if (isAtomElement(parser, "title"))
 					feed.setTitle(parser.nextText());
+				else if (isAtomElement(parser, "icon"))
+					feed.setThumbnail(parser.nextText());
 				else if (isAtomElement(parser, "updated"))
 					feed.setLastBuildDate(Utils.parseDate(parser.nextText()));
 				else if (isAtomElement(parser, "entry"))
@@ -43,7 +45,7 @@ public class AtomParser {
 					item.setTitle(parser.nextText());
 				} else if (isAtomElement(parser, "link")) {
 					String rel = parser.getAttributeValue(null, "rel");
-					if (rel == null)
+					if (rel == null || rel.equals("alternate"))
 						item.setLink(parser.getAttributeValue(null, "href"));
 					else if (rel.equals("payment"))
 						item.setPaymentURL(parser.getAttributeValue(null, "href"));
@@ -53,6 +55,8 @@ public class AtomParser {
 						item.setMediaURL(parser.getAttributeValue(null, "href"));
 					}
 				} else if (isAtomElement(parser, "summary") && item.getDescription() == null)
+					item.setDescription(parser.nextText());
+				else if (isAtomElement(parser, "content"))
 					item.setDescription(parser.nextText());
 				else if (isAtomElement(parser, "published"))
 					item.setPublicationDate(Utils.parseDate(parser.nextText()));

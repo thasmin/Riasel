@@ -26,8 +26,8 @@ public class Feed {
 		return _title;
 	}
 
-	public void setTitle(String _title) {
-		this._title = _title;
+	public void setTitle(String title) {
+		this._title = title;
 	}
 
 	public String getThumbnail() {
@@ -42,16 +42,16 @@ public class Feed {
 		return _lastBuildDate;
 	}
 
-	public void setLastBuildDate(Date mLastBuildDate) {
-		this._lastBuildDate = mLastBuildDate;
+	public void setLastBuildDate(Date lastBuildDate) {
+		this._lastBuildDate = lastBuildDate;
 	}
 
 	public FeedItem[] getItems() {
 		return _items;
 	}
 
-	public void setItems(FeedItem[] _items) {
-		this._items = _items;
+	public void setItems(FeedItem[] items) {
+		this._items = items;
 	}
 
 }

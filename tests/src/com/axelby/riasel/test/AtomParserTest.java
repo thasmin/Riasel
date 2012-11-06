@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
@@ -41,5 +40,33 @@ public class AtomParserTest extends ActivityTestCase {
 		cal.set(2003, 11, 13, 18, 30, 02);
 		assertEquals("Entry publish date difference", 0, cal.getTimeInMillis() / 1000 * 1000 - item.getPublicationDate().getTime());
 		assertEquals("Entry description", "Some text.", item.getDescription());
+	}
+
+	public void testShortFeed() throws XmlPullParserException, IOException {
+		String xml = getInstrumentation().getContext().getResources().getString(R.string.atom_short);
+		XmlPullParser parser = Xml.newPullParser();
+		InputStream is = new ByteArrayInputStream(xml.getBytes("utf-8"));
+		parser.setInput(is, "utf-8");
+		Feed feed = FeedParser.parseFeed(parser);
+
+		assertEquals("Title", "dive into mark", feed.getTitle());
+		assertEquals("Icon", "http://example.com/icon.png", feed.getThumbnail());
+		//assertEquals("Link", "http://example.org/feed.atom", feed.getLink());
+
+		Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+		cal.set(2005, 6, 31, 12, 29, 29);
+		assertEquals("Updated time difference", 0, cal.getTimeInMillis() / 1000 * 1000 - feed.getLastBuildDate().getTime());
+
+		assertEquals("Entry count", 1, feed.getItems().length);
+
+		FeedItem item = feed.getItems()[0];
+		assertEquals("Entry title", "Atom draft-07 snapshot", item.getTitle());
+		assertEquals("Entry link", "http://example.org/2005/04/02/atom", item.getLink());
+		assertEquals("Entry media url", "http://example.org/audio/ph34r_my_podcast.mp3", item.getMediaURL());
+		assertEquals("Entry media length", 1337L, item.getMediaSize().longValue());
+		cal.set(2003, 11, 13, 12, 29, 29);
+		assertEquals("Entry publish date difference", 0, cal.getTimeInMillis() / 1000 * 1000 - item.getPublicationDate().getTime());
+		String content = " <p>Such high volume would no doubt provide a dream platform for advertisers & ";
+		assertEquals("Entry description", content, item.getDescription());
 	}
 }

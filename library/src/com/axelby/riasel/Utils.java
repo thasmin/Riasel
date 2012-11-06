@@ -12,6 +12,8 @@ public class Utils {
 		final SimpleDateFormat dateFormats[] = new SimpleDateFormat[] {
 				new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"),
 				new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+				new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ"),
+				new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"),
 				new SimpleDateFormat("EEE, d MMM yy HH:mm:ss z"),
 				new SimpleDateFormat("EEE, d MMM yy HH:mm z"),
 				new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z"),

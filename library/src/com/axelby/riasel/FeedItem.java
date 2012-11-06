@@ -37,56 +37,56 @@ public class FeedItem {
 		return _title;
 	}
 
-	public void setTitle(String _title) {
-		this._title = _title;
+	public void setTitle(String title) {
+		this._title = title;
 	}
 
 	public String getPaymentURL() {
 		return _paymentURL;
 	}
 
-	public void setPaymentURL(String _paymentURL) {
-		this._paymentURL = _paymentURL;
+	public void setPaymentURL(String paymentURL) {
+		this._paymentURL = paymentURL;
 	}
 
 	public String getLink() {
 		return _link;
 	}
 
-	public void setLink(String _link) {
-		this._link = _link;
+	public void setLink(String link) {
+		this._link = link;
 	}
 
 	public String getDescription() {
 		return _description;
 	}
 
-	public void setDescription(String _description) {
-		this._description = _description;
+	public void setDescription(String description) {
+		this._description = description;
 	}
 
 	public Date getPublicationDate() {
 		return _publicationDate;
 	}
 
-	public void setPublicationDate(Date _publicationDate) {
-		this._publicationDate = _publicationDate;
+	public void setPublicationDate(Date publicationDate) {
+		this._publicationDate = publicationDate;
 	}
 
 	public String getMediaURL() {
 		return _mediaURL;
 	}
 
-	public void setMediaURL(String _mediaURL) {
-		this._mediaURL = _mediaURL;
+	public void setMediaURL(String mediaURL) {
+		this._mediaURL = mediaURL;
 	}
 
 	public Long getMediaSize() {
 		return _mediaSize;
 	}
 
-	public void setMediaSize(Long _mediaSize) {
-		this._mediaSize = _mediaSize;
+	public void setMediaSize(Long mediaSize) {
+		this._mediaSize = mediaSize;
 	}
 
 }
