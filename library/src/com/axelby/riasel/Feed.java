@@ -9,7 +9,6 @@ public class Feed {
 	private String _title;
 	private String _thumbnail;
 	private Date _lastBuildDate;
-	private FeedItem[] _items;
 
 	public ContentValues getContentValues() {
 		ContentValues values = new ContentValues();
@@ -44,14 +43,6 @@ public class Feed {
 
 	public void setLastBuildDate(Date lastBuildDate) {
 		this._lastBuildDate = lastBuildDate;
-	}
-
-	public FeedItem[] getItems() {
-		return _items;
-	}
-
-	public void setItems(FeedItem[] items) {
-		this._items = items;
 	}
 
 }

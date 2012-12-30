@@ -2,16 +2,18 @@ package com.axelby.riasel;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Vector;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import com.axelby.riasel.FeedParser.FeedInfoHandler;
+import com.axelby.riasel.FeedParser.FeedItemHandler;
 
 public class RSSParser {
 	private RSSParser() {
 	}
 
-	static Feed process(XmlPullParser parser) throws XmlPullParserException, IOException {
+	static void process(XmlPullParser parser, FeedInfoHandler feedInfoHandler, FeedItemHandler feedItemHandler) throws XmlPullParserException, IOException {
 		Feed feed = new Feed();
 		boolean in_image = false;
 
@@ -49,13 +51,13 @@ public class RSSParser {
 			}
 		}
 
-		feed.setItems(parseRSSItems(parser).toArray(new FeedItem[0]));
+		if (feedInfoHandler != null)
+			feedInfoHandler.OnFeedInfo(feed);
 
-		return feed;
+		parseRSSItems(parser, feedItemHandler);
 	}
 
-	private static Vector<FeedItem> parseRSSItems(XmlPullParser parser) throws XmlPullParserException, IOException {
-		Vector<FeedItem> items = new Vector<FeedItem>();
+	private static void parseRSSItems(XmlPullParser parser, FeedItemHandler feedItemHandler) throws XmlPullParserException, IOException {
 		FeedItem item = null;
 
 		// grab podcasts from item tags
@@ -89,13 +91,12 @@ public class RSSParser {
 			} else if (eventType == XmlPullParser.END_TAG) {
 				String name = parser.getName();
 				if (name.equalsIgnoreCase("item")) {
-					items.add(item);
+					if (feedItemHandler != null)
+						feedItemHandler.OnFeedItem(item);
 					item = null;
 				}
 			}
 		}
-
-		return items;
 	}
 
 }
