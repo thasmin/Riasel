@@ -5,14 +5,12 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.axelby.riasel.FeedParser.FeedInfoHandler;
-import com.axelby.riasel.FeedParser.FeedItemHandler;
-
 public class AtomParser {
 
 	final static String NS_ATOM = "http://www.w3.org/2005/Atom";
 
-	public static void process(XmlPullParser parser, FeedInfoHandler feedInfoHandler, FeedItemHandler feedItemHandler) throws XmlPullParserException, IOException {
+	public static void process(XmlPullParser parser, FeedParser feedParser)
+			throws XmlPullParserException, IOException {
 
 		Feed feed = new Feed();
 
@@ -29,13 +27,16 @@ public class AtomParser {
 			}
 		}
 
-		if (feedInfoHandler != null)
-			feedInfoHandler.OnFeedInfo(feed);
+		if (feedParser.getOnFeedInfoHandler() != null)
+			feedParser.getOnFeedInfoHandler().OnFeedInfo(feedParser, feed);
+		if (feedParser.shouldStopProcessing())
+			return;
 
-		parseEntries(parser, feedItemHandler);
+		parseEntries(parser, feedParser);
 	}
 
-	private static void parseEntries(XmlPullParser parser, FeedItemHandler feedItemHandler) throws XmlPullParserException, IOException {
+	private static void parseEntries(XmlPullParser parser, FeedParser feedParser)
+			throws XmlPullParserException, IOException {
 		FeedItem item = null;
 
 		// grab podcasts from item tags
@@ -66,8 +67,10 @@ public class AtomParser {
 					item.setPublicationDate(Utils.parseDate(parser.nextText()));
 			} else if (eventType == XmlPullParser.END_TAG) {
 				if (isAtomElement(parser, "entry")) {
-					if (feedItemHandler != null)
-						feedItemHandler.OnFeedItem(item);
+					if (feedParser.getOnFeedItemHandler() != null)
+						feedParser.getOnFeedItemHandler().OnFeedItem(feedParser, item);
+					if (feedParser.shouldStopProcessing())
+						return;
 					item = null;
 				}
 			}

@@ -8,10 +8,10 @@ import org.xmlpull.v1.XmlPullParserException;
 public class FeedParser {
 
 	public interface FeedInfoHandler {
-		public void OnFeedInfo(Feed feed);
+		public void OnFeedInfo(FeedParser feedParser, Feed feed);
 	}
 	public interface FeedItemHandler {
-		public void OnFeedItem(FeedItem item);
+		public void OnFeedItem(FeedParser feedParser, FeedItem item);
 	}
 
 	public class UnknownFeedException extends Exception {
@@ -26,15 +26,29 @@ public class FeedParser {
 
 	private FeedInfoHandler _feedInfoHandler;
 	private FeedItemHandler _feedItemHandler;
+	private boolean _stopProcessing = false;
 
 	public FeedParser() {
 	}
 
+	FeedInfoHandler getOnFeedInfoHandler() {
+		return _feedInfoHandler;
+	}
 	public void setOnFeedInfoHandler(FeedInfoHandler handler) {
 		_feedInfoHandler = handler;
 	}
+	FeedItemHandler getOnFeedItemHandler() {
+		return _feedItemHandler;
+	}
 	public void setOnFeedItemHandler(FeedItemHandler handler) {
 		_feedItemHandler = handler;
+	}
+
+	public boolean shouldStopProcessing() {
+		return _stopProcessing;
+	}
+	public void stopProcessing() {
+		_stopProcessing = true;
 	}
 
 	public void parseFeed(XmlPullParser parser) throws XmlPullParserException, IOException, UnknownFeedException {
@@ -43,9 +57,9 @@ public class FeedParser {
 		while (eventType != XmlPullParser.START_TAG)
 			eventType = parser.next();
 		if (parser.getName().equals("rss")) {
-			RSSParser.process(parser, _feedInfoHandler, _feedItemHandler);
+			RSSParser.process(parser, this);
 		} else if (parser.getName().equals("feed")) {
-			AtomParser.process(parser, _feedInfoHandler, _feedItemHandler);
+			AtomParser.process(parser, this);
 		} else {
 			throw new UnknownFeedException();
 		}
