@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+	<string name="rss_bbc"><![CDATA[
+		<rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:ppg="http://bbc.co.uk/2009/01/ppgRss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+			<channel>
+				<title>6 Minute English</title>
+				<link>http://www.bbc.co.uk/worldservice/learningenglish/general/sixminute/</link>
+				<description>Learn and practise useful English language for everyday situations with the BBC. Your weekly instruction manual for saying or doing something in English is published every Friday. Each programme is six minutes long and contains examples and explanations to help you improve your knowledge of the English language across a wide range of topics.</description>
+				<itunes:summary>Learn and practise useful English language for everyday situations with the BBC. Your weekly instruction manual for saying or doing something in English is published every Friday. Each programme is six minutes long and contains examples and explanations to help you improve your knowledge of the English language across a wide range of topics.</itunes:summary>
+				<itunes:author>BBC World Service</itunes:author>
+				<itunes:owner>
+					<itunes:name>BBC</itunes:name>
+					<itunes:email>podcast.support@bbc.co.uk</itunes:email>
+					</itunes:owner>
+				<language>en-gb</language>
+				<ppg:systemRef systemId="pid.genre" key="C00045" />
+				<ppg:systemRef systemId="pid.genre" key="C00044" />
+				<ppg:network id="worldservice" name="BBC World Service" />
+				<ppg:seriesDetails typicalDuration="PT6M" active="true" public="true" region="all" launchDate="2009-01-21" frequency="weekly" daysLive="30" liveItems="4" />
+				<image>
+					<url>http://www.bbc.co.uk/podcasts/assets/artwork/6min.jpg</url>
+					<title>6 Minute English</title>
+					<link>http://www.bbc.co.uk/worldservice/learningenglish/general/sixminute/</link>
+				</image>
+				<itunes:image href="http://www.bbc.co.uk/podcasts/assets/artwork/6min.jpg" />
+				<copyright>(C) BBC 2013</copyright>
+				<pubDate>Sun, 02 Jun 2013 13:00:03 +0100</pubDate>
+				<itunes:category text="Education" />
+				<itunes:category text="Education">
+					<itunes:category text="Language Courses" />
+				</itunes:category>
+				<itunes:keywords>learing, englis, inglish, grammer, practise, practice, quiz, speak</itunes:keywords>
+				<media:keywords>learing, englis, inglish, grammer, practise, practice, quiz, speak</media:keywords>
+				<itunes:explicit>no</itunes:explicit>
+				<media:rating scheme="urn:simple">nonadult</media:rating>
+				<atom:link href="http://downloads.bbc.co.uk/podcasts/worldservice/how2/rss.xml" rel="self" type="application/rss+xml" />
+				<item>
+					<title>6min: Feeling good about your country: 31 May 13</title>
+					<description>What makes you feel good about your country? We discuss the people and things that give us national pride.</description>
+					<itunes:subtitle>What makes you feel good about your country? We discuss the people and things that give us national pride....</itunes:subtitle>
+					<itunes:summary>What makes you feel good about your country? We discuss the people and things that give us national pride.</itunes:summary>
+					<pubDate>Fri, 31 May 2013 13:00:00 +0100</pubDate>
+					<itunes:duration>6:12</itunes:duration>
+					<enclosure url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130531-1300a.mp3" length="2984064" type="audio/mpeg" />
+					<guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130531-1300.mp3</guid>
+					<link>http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130531-1300a.mp3</link>
+					<media:content url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130531-1300a.mp3" fileSize="2984064" type="audio/mpeg" medium="audio" expression="full" duration="372" />
+					<itunes:author>BBC World Service</itunes:author>
+				</item>
+				<item>
+					<title>6min: Annoying office habits: 24 May 13</title>
+					<description>What things irritate workers about each other in the office? Listen to this week\'s 6 Minute English.</description>
+					<itunes:subtitle>What things irritate workers about each other in the office? Listen to this week\'s 6 Minute English....</itunes:subtitle>
+					<itunes:summary>What things irritate workers about each other in the office? Listen to this week\'s 6 Minute English.</itunes:summary>
+					<pubDate>Fri, 24 May 2013 13:00:00 +0100</pubDate>
+					<itunes:duration>6:15</itunes:duration>
+					<enclosure url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130524-1300a.mp3" length="3000994" type="audio/mpeg" />
+					<guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130524-1300.mp3</guid>
+					<link>http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130524-1300a.mp3</link>
+					<media:content url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130524-1300a.mp3" fileSize="3000994" type="audio/mpeg" medium="audio" expression="full" duration="375" />
+					<itunes:author>BBC World Service</itunes:author>
+				</item>
+				<item>
+					<title>6min: Sleeping for learning: 17 May 13</title>
+					<description>How much can you learn when you\'re tired? Can lack of sleep have a negative effect on students\' performance?</description>
+					<itunes:subtitle>How much can you learn when you\'re tired? Can lack of sleep have a negative effect on students\' performance?...</itunes:subtitle>
+					<itunes:summary>How much can you learn when you\'re tired? Can lack of sleep have a negative effect on students\' performance?</itunes:summary>
+					<pubDate>Fri, 17 May 2013 13:00:00 +0100</pubDate>
+					<itunes:duration>6:15</itunes:duration>
+					<enclosure url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130517-1300a.mp3" length="3004544" type="audio/mpeg" />
+					<guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130517-1300.mp3</guid>
+					<link>http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130517-1300a.mp3</link>
+					<media:content url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130517-1300a.mp3" fileSize="3004544" type="audio/mpeg" medium="audio" expression="full" duration="375" />
+					<itunes:author>BBC World Service</itunes:author>
+				</item>
+				<item>
+					<title>6min: How noisy is \'too noisy\'?: 10 May 13</title>
+					<description>The Queen loses her temper: why noisy drummers angered Dame Helen Mirren.</description>
+					<itunes:subtitle>The Queen loses her temper: why noisy drummers angered Dame Helen Mirren....</itunes:subtitle>
+					<itunes:summary>The Queen loses her temper: why noisy drummers angered Dame Helen Mirren.</itunes:summary>
+					<pubDate>Fri, 10 May 2013 13:00:00 +0100</pubDate>
+					<itunes:duration>6:13</itunes:duration>
+					<enclosure url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130510-1300a.mp3" length="2990208" type="audio/mpeg" />
+					<guid isPermaLink="false">http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130510-1300.mp3</guid>
+					<link>http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130510-1300a.mp3</link>
+					<media:content url="http://downloads.bbc.co.uk/podcasts/worldservice/how2/6min_20130510-1300a.mp3" fileSize="2990208" type="audio/mpeg" medium="audio" expression="full" duration="373" />
+					<itunes:author>BBC World Service</itunes:author>
+				</item>
+			</channel>
+		</rss>
+]]></string>
+
+</resources>

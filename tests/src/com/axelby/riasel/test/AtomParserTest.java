@@ -28,7 +28,7 @@ public class AtomParserTest extends ActivityTestCase {
 		FeedParser feedParser = new FeedParser();
 		feedParser.setOnFeedInfoHandler(new FeedParser.FeedInfoHandler() {
 			@Override
-			public void OnFeedInfo(Feed feed) {
+			public void OnFeedInfo(FeedParser parser, Feed feed) {
 				assertEquals("Title", "Example Feed", feed.getTitle());
 
 				Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
@@ -40,7 +40,7 @@ public class AtomParserTest extends ActivityTestCase {
 		final Integer itemCount[] = new Integer[] { 0 };
 		feedParser.setOnFeedItemHandler(new FeedParser.FeedItemHandler() {
 			@Override
-			public void OnFeedItem(FeedItem item) {
+			public void OnFeedItem(FeedParser parser, FeedItem item) {
 				assertEquals("There should be only one item.", 0, itemCount[0].intValue());
 				itemCount[0]++;
 
@@ -67,7 +67,7 @@ public class AtomParserTest extends ActivityTestCase {
 		FeedParser feedParser = new FeedParser();
 		feedParser.setOnFeedInfoHandler(new FeedParser.FeedInfoHandler() {
 			@Override
-			public void OnFeedInfo(Feed feed) {
+			public void OnFeedInfo(FeedParser parser, Feed feed) {
 				assertEquals("Title", "dive into mark", feed.getTitle());
 				assertEquals("Icon", "http://example.com/icon.png", feed.getThumbnail());
 				//assertEquals("Link", "http://example.org/feed.atom", feed.getLink());
@@ -81,7 +81,7 @@ public class AtomParserTest extends ActivityTestCase {
 		final Integer itemCount[] = new Integer[] { 0 };
 		feedParser.setOnFeedItemHandler(new FeedParser.FeedItemHandler() {
 			@Override
-			public void OnFeedItem(FeedItem item) {
+			public void OnFeedItem(FeedParser parser, FeedItem item) {
 				assertEquals("There should be only one item.", 0, itemCount[0].intValue());
 				itemCount[0]++;
 
