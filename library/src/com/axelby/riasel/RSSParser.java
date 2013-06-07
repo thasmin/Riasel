@@ -7,6 +7,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class RSSParser {
+	private static final String NAMESPACE_MEDIA = "http://search.yahoo.com/mrss/";
+
 	private RSSParser() {
 	}
 
@@ -46,6 +48,8 @@ public class RSSParser {
 					feed.setLastBuildDate(date);
 			} else if (name.equalsIgnoreCase("title") && parser.getNamespace().equals("")) {
 				feed.setTitle(parser.nextText());
+			} else if (name.equalsIgnoreCase("thumbnail") && parser.getNamespace().equals(NAMESPACE_MEDIA)) {
+				feed.setThumbnail(parser.getAttributeValue("", "url"));
 			}
 		}
 
