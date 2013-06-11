@@ -9,6 +9,7 @@ public class Feed {
 	private String _title;
 	private String _thumbnail;
 	private Date _lastBuildDate;
+	private Date _pubDate;
 
 	public ContentValues getContentValues() {
 		ContentValues values = new ContentValues();
@@ -18,6 +19,8 @@ public class Feed {
 			values.put("thumbnail", getThumbnail());
 		if (getLastBuildDate() != null)
 			values.put("lastBuildDate", getLastBuildDate().getTime());
+		if (getPubDate() != null)
+			values.put("pubDate", getPubDate().getTime());
 		return values;
 	}
 
@@ -43,6 +46,14 @@ public class Feed {
 
 	public void setLastBuildDate(Date lastBuildDate) {
 		this._lastBuildDate = lastBuildDate;
+	}
+
+	public Date getPubDate() {
+		return _pubDate;
+	}
+
+	public void setPubDate(Date _pubDate) {
+		this._pubDate = _pubDate;
 	}
 
 }

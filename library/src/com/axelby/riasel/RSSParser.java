@@ -42,6 +42,10 @@ public class RSSParser {
 			} else if (name.equals("image")) {
 				in_image = true;
 				continue;
+			} else if (name.equalsIgnoreCase("pubDate")) {
+				Date date = Utils.parseDate(parser.nextText());
+				if (date != null)
+					feed.setPubDate(date);
 			} else if (name.equalsIgnoreCase("lastBuildDate")) {
 				Date date = Utils.parseDate(parser.nextText());
 				if (date != null)
