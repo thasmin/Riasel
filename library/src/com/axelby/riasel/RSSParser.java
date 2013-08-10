@@ -12,8 +12,7 @@ public class RSSParser {
 	private RSSParser() {
 	}
 
-	static void process(XmlPullParser parser, FeedParser feedParser)
-			throws XmlPullParserException, IOException {
+	static void process(XmlPullParser parser, FeedParser feedParser) throws XmlPullParserException, IOException {
 		Feed feed = new Feed();
 		boolean in_image = false;
 
@@ -65,8 +64,7 @@ public class RSSParser {
 		parseRSSItems(parser, feedParser);
 	}
 
-	private static void parseRSSItems(XmlPullParser parser, FeedParser feedParser)
-			throws XmlPullParserException, IOException {
+	private static void parseRSSItems(XmlPullParser parser, FeedParser feedParser) throws XmlPullParserException, IOException {
 		FeedItem item = null;
 
 		// grab podcasts from item tags
@@ -76,6 +74,8 @@ public class RSSParser {
 				String namespace = parser.getNamespace();
 				if (name.equalsIgnoreCase("item")) {
 					item = new FeedItem();
+				} else if (name.equalsIgnoreCase("guid")) {
+					item.setUniqueId(parser.nextText());
 				} else if (name.equalsIgnoreCase("title") && parser.getNamespace().equals("")) {
 					item.setTitle(parser.nextText());
 				} else if (name.equalsIgnoreCase("link")) {

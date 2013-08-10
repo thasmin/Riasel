@@ -6,6 +6,7 @@ import android.content.ContentValues;
 
 public class FeedItem {
 
+	private String _uniqueId;
 	private String _title;
 	private String _paymentURL;
 	private String _link;
@@ -31,6 +32,14 @@ public class FeedItem {
 		if (getMediaSize() != null)
 			values.put("mediaSize", getMediaSize());
 		return values;
+	}
+
+	public String getUniqueId() {
+		return _uniqueId;
+	}
+
+	public void setUniqueId(String uniqueId) {
+		_uniqueId = uniqueId;
 	}
 
 	public String getTitle() {
