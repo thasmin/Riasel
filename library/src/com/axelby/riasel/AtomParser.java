@@ -9,8 +9,7 @@ public class AtomParser {
 
 	final static String NS_ATOM = "http://www.w3.org/2005/Atom";
 
-	public static void process(XmlPullParser parser, FeedParser feedParser)
-			throws XmlPullParserException, IOException {
+	public static void process(XmlPullParser parser, FeedParser feedParser) throws XmlPullParserException, IOException {
 
 		Feed feed = new Feed();
 
@@ -35,8 +34,7 @@ public class AtomParser {
 		parseEntries(parser, feedParser);
 	}
 
-	private static void parseEntries(XmlPullParser parser, FeedParser feedParser)
-			throws XmlPullParserException, IOException {
+	private static void parseEntries(XmlPullParser parser, FeedParser feedParser) throws XmlPullParserException, IOException {
 		FeedItem item = null;
 
 		// grab podcasts from item tags
@@ -44,6 +42,8 @@ public class AtomParser {
 			if (eventType == XmlPullParser.START_TAG) {
 				if (isAtomElement(parser, "entry")) {
 					item = new FeedItem();
+				} else if (isAtomElement(parser, "id")) {
+					item.setUniqueId(parser.nextText());
 				} else if (isAtomElement(parser, "title")) {
 					item.setTitle(parser.nextText());
 				} else if (isAtomElement(parser, "link")) {
@@ -54,7 +54,7 @@ public class AtomParser {
 						item.setPaymentURL(parser.getAttributeValue(null, "href"));
 					else if (rel.equals("enclosure")) {
 						if (parser.getAttributeValue(null, "length") != null)
-						item.setMediaSize(Long.valueOf(parser.getAttributeValue(null, "length")));
+							item.setMediaSize(Long.valueOf(parser.getAttributeValue(null, "length")));
 						item.setMediaURL(parser.getAttributeValue(null, "href"));
 					}
 				} else if (isAtomElement(parser, "summary") && item.getDescription() == null)
