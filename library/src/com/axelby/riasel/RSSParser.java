@@ -1,10 +1,10 @@
 package com.axelby.riasel;
 
-import java.io.IOException;
-import java.util.Date;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.util.Date;
 
 public class RSSParser {
 	private static final String NAMESPACE_MEDIA = "http://search.yahoo.com/mrss/";
@@ -34,12 +34,13 @@ public class RSSParser {
 				continue;
 			}
 
-			// if we're starting an item, move past the subscription details
-			// section
+			// if we're starting an item, move past the subscription details section
 			if (name.equals("item")) {
 				break;
 			} else if (name.equals("image")) {
 				in_image = true;
+				continue;
+			} else if (parser.getDepth() != 3) {
 				continue;
 			} else if (name.equalsIgnoreCase("pubDate")) {
 				Date date = Utils.parseDate(parser.nextText());
